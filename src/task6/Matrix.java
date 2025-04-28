@@ -26,8 +26,6 @@ public final class Matrix extends ArrayPI {
         Gson gson = new Gson();
         String resultJson = gson.toJson(result);
 
-        System.out.println(resultJson);
-
         UpdateTable.updateColumns(
                 Main.tableName, Main.conn, Main.ID,
                 new String[] {"Result"},
