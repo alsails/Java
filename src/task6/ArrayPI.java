@@ -16,11 +16,11 @@ public class ArrayPI {
     }
 
     public void inputMatrices() throws SQLException {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         System.out.println("Введите элементы первой матрицы (7 строк по 7 чисел в каждой):");
         for (int i = 0; i < 7; i++) {
-            String[] line = scanner.nextLine().trim().split("\\s+");
+            String[] line = sc.nextLine().trim().split("\\s+");
             for (int j = 0; j < 7; j++) {
                 arr1[i][j] = Integer.parseInt(line[j]);
             }
@@ -28,7 +28,7 @@ public class ArrayPI {
 
         System.out.println("Введите элементы второй матрицы (7 строк по 7 чисел в каждой):");
         for (int i = 0; i < 7; i++) {
-            String[] line = scanner.nextLine().trim().split("\\s+");
+            String[] line = sc.nextLine().trim().split("\\s+");
             for (int j = 0; j < 7; j++) {
                 arr2[i][j] = Integer.parseInt(line[j]);
             }

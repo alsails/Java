@@ -58,7 +58,6 @@ public class Main {
                     "5. Сохранить все данные (вышеполученные результаты) из MySQL в Excel и вывести на экран\n" +
                     "6. Выход");
             s = sc.next();
-
             try {
                 x = Integer.parseInt(s);
             } catch (NumberFormatException e) {
