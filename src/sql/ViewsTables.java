@@ -1,15 +1,15 @@
 package sql;
 
-import task1.Main;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ViewsTables {
-    public static void viewsTables() throws SQLException {
+    public static void viewsTables(Connection conn) throws SQLException {
         String sql = "SHOW TABLES";
-        PreparedStatement ps = Main.conn.prepareStatement(sql);
+        PreparedStatement ps = conn.prepareStatement(sql);
 
         ResultSet rs = ps.executeQuery();
         System.out.println("Название таблиц:");

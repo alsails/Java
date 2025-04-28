@@ -67,8 +67,8 @@ public class Main {
             }
 
             switch (x) {
-                case 1 -> ViewsTables.viewsTables();
-                case 2 -> CreateTable.createTable();
+                case 1 -> ViewsTables.viewsTables(conn);
+                case 2 -> CreateTable.createTable(conn, tableName, columns);
                 case 3 -> Action.sum();
                 case 4 -> Action.minus();
                 case 5 -> Action.multi();
@@ -76,7 +76,7 @@ public class Main {
                 case 7 -> Action.del();
                 case 8 -> Action.modul();
                 case 9 -> Action.stepen();
-                case 10 -> ExportToExcel.exportToExcel();
+                case 10 -> ExportToExcel.exportToExcel(fileName, columns, tableName, conn);
             }
 
         }
