@@ -2,6 +2,7 @@ package sql;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -15,21 +16,27 @@ public class SelectAllFromTable {
 
             System.out.println("\nСодержимое таблицы: " + tableName);
 
-            //заголовки
-            int columnCount = rs.getMetaData().getColumnCount();
-            for (int i = 1; i <= columnCount; i++) {
-                System.out.print(rs.getMetaData().getColumnName(i) + "\t\t");
-            }
-            System.out.println("\n---------------------------------------");
+            ResultSetMetaData meta = rs.getMetaData();
+            int columnCount = meta.getColumnCount();
+            int columnWidth = 20;
 
+            // Заголовки
+            for (int i = 1; i <= columnCount; i++) {
+                System.out.printf("%-" + columnWidth + "s", meta.getColumnName(i));
+            }
+            System.out.println();
+            System.out.println("-".repeat(columnWidth * columnCount));
+
+            // Данные
             while (rs.next()) {
                 for (int i = 1; i <= columnCount; i++) {
-                    System.out.print(rs.getString(i) + "\t\t");
+                    String value = rs.getString(i);
+                    System.out.printf("%-" + columnWidth + "s", value);
                 }
                 System.out.println();
             }
 
-            System.out.println("---------------------------------------\n");
+            System.out.println("-".repeat(columnWidth * columnCount) + "\n");
 
         } catch (SQLException e) {
             System.out.println("Ошибка при чтении данных из таблицы: " + e.getMessage());

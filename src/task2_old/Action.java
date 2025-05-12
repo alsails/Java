@@ -1,8 +1,7 @@
-package task2;
+package task2_old;
 
 import sql.InsertIntoTable;
 import sql.UpdateTable;
-import task2.Main;
 
 import java.sql.SQLException;
 import java.util.Scanner;

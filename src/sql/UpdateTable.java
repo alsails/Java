@@ -1,7 +1,5 @@
 package sql;
 
-import task2.Main;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

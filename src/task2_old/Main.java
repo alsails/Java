@@ -1,10 +1,9 @@
-package task2;
+package task2_old;
 
 import config.Config;
 import sql.CreateTable;
 import sql.ExportToExcel;
 import sql.ViewsTables;
-import task2.Action;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
