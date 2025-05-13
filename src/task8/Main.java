@@ -6,21 +6,21 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import config.Config;
 import sql.*;
+import utils.Utils;
 
 public class Main {
     protected final static Scanner sc = new Scanner(System.in);
     protected final static String mysqlurl = Config.DB_URL + Config.DB_NAME;
     public static Connection conn;
 
-    static {
-        System.out.println("Введите название таблицы: ");
-    }
-    public static String tableName = sc.nextLine();
+    public static String tableName;
+    public static String fileName;
 
-    static {
-        System.out.println("Введите название Excel файла: ");
-    }
-    public static String fileName = sc.nextLine();
+    public static final String[][] columns = {
+            {"name", "VARCHAR(50)"},
+            {"age", "INT"},
+            {"salary", "DOUBLE(10, 2)"}
+    };
 
     static {
         try {
@@ -29,13 +29,10 @@ public class Main {
         } catch(SQLException e) {
             System.out.println("Ошибка подключения к БД: " + e.getMessage());
         }
-    }
 
-    public static final String[][] columns = {
-            {"name", "VARCHAR(50)"},
-            {"age", "INT"},
-            {"salary", "DOUBLE(10, 2)"}
-    };
+        tableName = Utils.validateTableName();
+        fileName  = Utils.validateFileName();
+    }
 
     public static void main(String[] args) throws SQLException {
         int x = 0;
@@ -68,4 +65,5 @@ public class Main {
         }
     }
 }
+
 

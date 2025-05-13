@@ -4,6 +4,7 @@ import config.Config;
 import sql.CreateTable;
 import sql.ExportToExcel;
 import sql.ViewsTables;
+import utils.Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,13 +21,9 @@ public class Main {
         System.out.println("Введите название таблицы: ");
     }
 
-    public static String tableName = sc.nextLine();
+    public static String tableName = Utils.validateTableName();
 
-    static {
-        System.out.println("Введите название Excel: ");
-    }
-
-    public static String fileName = sc.nextLine();
+    public static String fileName = Utils.validateFileName();
 
     static {
         try {

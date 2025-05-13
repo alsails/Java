@@ -16,24 +16,46 @@ public class Action {
 
         while (true) {
             System.out.println("Введите первое число: ");
+            String input = sc.nextLine();
+
             try {
-                number1 = Double.parseDouble(sc.nextLine());
+                double number = Double.parseDouble(input);
+
+                if (Double.isInfinite(number)) {
+                    System.out.println("Число слишком большое. Попробуйте снова.");
+                    continue;
+                }
+
+                number1 = number;
                 break;
+
             } catch (NumberFormatException e) {
                 System.out.println("Некорректный ввод. Необходимо ввести число.");
             }
         }
 
+
         if (isTwo) {
             while (true) {
                 System.out.println("Введите второе число: ");
+                String input = sc.nextLine();
+
                 try {
-                    number2 = Double.parseDouble(sc.nextLine());
+                    double number = Double.parseDouble(input);
+
+                    if (Double.isInfinite(number)) {
+                        System.out.println("Число слишком большое. Попробуйте снова.");
+                        continue;
+                    }
+
+                    number2 = number;
                     break;
+
                 } catch (NumberFormatException e) {
                     System.out.println("Некорректный ввод. Необходимо ввести число.");
                 }
             }
+
         }
     }
 

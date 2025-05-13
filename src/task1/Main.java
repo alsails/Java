@@ -3,26 +3,22 @@ package task1;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
+
 import config.Config;
 import sql.*;
+import utils.Utils;
 
 public class Main {
     protected final static Scanner sc = new Scanner(System.in);
     protected final static String mysqlurl = Config.DB_URL + Config.DB_NAME;
     public static Connection conn;
 
-    static {
-        System.out.println("Введите название таблицы: ");
-    }
+    public static String tableName = Utils.validateTableName();
 
-    public static String tableName = sc.nextLine();
-
-    static {
-        System.out.println("Введите название Excel файла: ");
-    }
-
-    public static String fileName = sc.nextLine();
+    public static String fileName = Utils.validateFileName();
 
     static {
         try {
@@ -33,13 +29,28 @@ public class Main {
         }
     }
 
-    // Задаем колонки для SQL
+    static String col1;
+    static String col2;
+    static String col3;
+    static String col4;
+
+    static {
+        Set<String> usedNames = new HashSet<>();
+
+        col1 = Utils.getUniqueColumnName("Введите название для первой колонки:", usedNames);
+        col2 = Utils.getUniqueColumnName("Введите название для второй колонки:", usedNames);
+        col3 = Utils.getUniqueColumnName("Введите название для третьей колонки:", usedNames);
+        col4 = Utils.getUniqueColumnName("Введите название для четвертой колонки:", usedNames);
+    }
+
     public static final String[][] columns = {
-            {"action", "VARCHAR(50)"},
-            {"number_1", "DOUBLE(10, 2)"},
-            {"number_2", "DOUBLE(10, 2)"},
-            {"result", "DOUBLE(10, 2)"}
+            {col1, "LONGTEXT"},
+            {col2, "LONGTEXT"},
+            {col3, "LONGTEXT"},
+            {col4, "LONGTEXT"}
     };
+
+
 
 
     public static void main(String[] args) throws SQLException {

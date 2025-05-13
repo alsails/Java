@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import config.Config;
 import sql.*;
+import utils.Utils;
 
 public class Main {
     protected final static Scanner sc = new Scanner(System.in);
@@ -15,12 +16,10 @@ public class Main {
     static {
         System.out.println("Введите название таблицы: ");
     }
-    public static String tableName = sc.nextLine();
 
-    static {
-        System.out.println("Введите название Excel файла: ");
-    }
-    public static String fileName = sc.nextLine();
+    public static String tableName = Utils.validateTableName();
+
+    public static String fileName = Utils.validateFileName();
 
     public static final String[][] columns = {
             {"action", "VARCHAR(255)"},

@@ -13,10 +13,25 @@ public class Action {
     public static Scanner sc = new Scanner(System.in);
 
     public static void getLine() throws SQLException {
-        System.out.println("Введите первую строку: ");
-        line1 = sc.nextLine();
-        System.out.println("Введите вторую строку: ");
-        line2 = sc.nextLine();
+        while (true) {
+            System.out.println("Введите первую строку (не менее 50 символов): ");
+            line1 = sc.nextLine();
+            if (line1.length() >= 50) {
+                break;
+            } else {
+                System.out.println("Ошибка: строка должна содержать минимум 50 символов!");
+            }
+        }
+
+        while (true) {
+            System.out.println("Введите вторую строку (не менее 50 символов): ");
+            line2 = sc.nextLine();
+            if (line1.length() >= 50) {
+                break;
+            } else {
+                System.out.println("Ошибка: строка должна содержать минимум 50 символов!");
+            }
+        }
 
         Main.ID = InsertIntoTable.insertIntoTable(Main.tableName, Main.conn, Main.columns, new Object[] {line1, line2, 0, 0, null, null});
     }
@@ -63,17 +78,15 @@ public class Action {
         System.out.println("Введите подстроку: ");
         String sub = sc.nextLine();
 
-        int index1 = line1.indexOf(sub);
-        int index2 = line2.indexOf(sub);
         String result;
 
-        if (index1 != -1) {
-            result = "В первой ндекс начала подстроки: " + index1 + ", индекс окончания: " + (index1 + sub.length()) + ". ";
-        } else result = "В первой подстрока не найдена. ";
+        if (line1.endsWith(sub)) {
+            result = "Первая строка заканчивается на " + sub + ". ";
+        } else result = "Первая строка не заканчивается на " + sub + ". ";
 
-        if (index2 != -1) {
-            result += "Во второй индекс начала подстроки: " + index2 + ", индекс окончания: " + (index2 + sub.length());
-        } else result += "Во второй подстрока не найдена";
+        if (line2.endsWith(sub)) {
+            result = "Первая строка заканчивается на " + sub + ". ";
+        } else result = "Первая строка не заканчивается на " + sub + ". ";
 
         System.out.println(result);
 
