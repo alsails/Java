@@ -55,6 +55,19 @@ public class Utils {
         }
     }
 
+    public static String escapeMysqlIdentifier(String identifier) {
+        if (identifier == null || identifier.isBlank()) {
+            throw new IllegalArgumentException("Identifier must not be null or blank");
+        }
+
+        if ((identifier.startsWith("`") && identifier.endsWith("`")) || identifier.matches("^[`']+$")) {
+            return identifier;  // ничего не трогаем
+        }
+
+        String escaped = identifier.replace("`", "``");
+        return "`" + escaped + "`";
+    }
+
     public static String validateFileName() {
         while (true) {
             System.out.print("Введите название Excel файла: ");
