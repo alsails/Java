@@ -12,7 +12,7 @@ public class InsertIntoTable {
         StringBuilder sql = new StringBuilder("INSERT INTO `" + tableName + "` (");
         StringBuilder placeholders = new StringBuilder();
 
-        for (int i = 0; i < columns.length; i++) {
+        for (int i = 1; i < columns.length; i++) {
             sql.append(columns[i][0]);
             placeholders.append("?");
             if (i < columns.length - 1) {

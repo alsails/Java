@@ -1,10 +1,9 @@
-package task2;
+package task4;
 
 import config.Config;
 import sql.CreateTable;
 import sql.ExportToExcel;
 import sql.ViewsTables;
-import task2.Action;
 import utils.Utils;
 
 import java.sql.Connection;
@@ -37,10 +36,10 @@ public class Main {
     public static String[][] columns = {
             {"line1", "text"},
             {"line2", "text"},
-            {"length1", "int"},
-            {"length2", "int"},
-            {"line3", "text"},
-            {"compare", "text"}
+            {"lineindex", "text"},
+            {"uppercase", "text"},
+            {"lowercase", "text"},
+            {"substring", "text"}
     };
 
     public static void main(String[] args) throws SQLException {
@@ -52,12 +51,12 @@ public class Main {
                     "2. Создать таблицу в MySQL\n" +
                     "3. Ввести две строки с клавиатуры, результат сохранить в MySQL с последующим выводом в\n" +
                     "консоль\n" +
-                    "4. Подсчитать размер ранее введенных строк, результат сохранить в MySQL с последующим\n" +
+                    "4. Возвращение подстроки по индексам, результат сохранить в MySQL с последующим выводом в\n" +
+                    "консоль\n" +
+                    "5. Перевод строк в верхний и нижний регистры, результат сохранить в MySQL с последующим выводом\n" +
+                    "в консоль\n" +
+                    "6. Поиск подстроки и определение окончания подстроки, результат сохранить в MySQL с последующим\n" +
                     "выводом в консоль\n" +
-                    "5. Объединить две строки в единое целое, результат сохранить в MySQL с последующим выводом\n" +
-                    "в консоль\n" +
-                    "6. Сравнить две ранее введенные строки, результат сохранить в MySQL с последующим выводом\n" +
-                    "в консоль\n" +
                     "7. Сохранить все данные (вышеполученные результаты) из MySQL в Excel и вывести на экран\n" +
                     "8. Выход");
             s = sc.next();
@@ -72,9 +71,9 @@ public class Main {
                 case 1 -> ViewsTables.viewsTables(conn);
                 case 2 -> CreateTable.createTable(conn, tableName, columns);
                 case 3 -> Action.getLine();
-                case 4 -> Action.getLength();
-                case 5 -> Action.unionLine();
-                case 6 -> Action.compareLine();
+                case 4 -> Action.getIndex();
+                case 5 -> Action.changeCase();
+                case 6 -> Action.searchSubstring();
                 case 7 -> ExportToExcel.exportToExcel(fileName, columns, tableName, conn);
             }
         }
