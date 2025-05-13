@@ -10,8 +10,6 @@ import java.sql.SQLException;
 public class ExportToExcel {
     public static void exportToExcel(String fileName, String[][] columns, String tableName, Connection conn) throws SQLException {
         String fileurl = Config.EXCEL_URL + fileName;
-        System.out.println("tableName excel: " + tableName);
-
 
         StringBuilder header = new StringBuilder("SELECT 'ID'");
         StringBuilder select = new StringBuilder("SELECT ID");

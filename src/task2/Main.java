@@ -5,6 +5,7 @@ import sql.CreateTable;
 import sql.ExportToExcel;
 import sql.ViewsTables;
 import task2.Action;
+import utils.Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,13 +22,9 @@ public class Main {
         System.out.println("Введите название таблицы: ");
     }
 
-    public static String tableName = sc.nextLine();
+    public static String tableName = Utils.validateTableName();
 
-    static {
-        System.out.println("Введите название Excel: ");
-    }
-
-    public static String fileName = sc.nextLine();
+    public static String fileName = Utils.validateFileName();
 
     static {
         try {
@@ -83,3 +80,8 @@ public class Main {
         }
     }
 }
+
+// Звезды и планеты мерцают в ночи, словно тысячи огней мечты
+// Тёплый ветер и дождь несёт ароматы весенней свежести
+// Мелодия дождя звучит в сердце тихой и светлой симфонией
+// Ветер играет с листвой, шепча забытые детские сказки

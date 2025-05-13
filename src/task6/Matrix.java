@@ -6,7 +6,7 @@ import sql.UpdateTable;
 import java.sql.SQLException;
 
 public final class Matrix extends ArrayPI {
-    private int[][] result;
+    int[][] result;
 
     public Matrix() {
         super();

@@ -60,17 +60,13 @@ public class Utils {
             throw new IllegalArgumentException("Identifier must not be null or blank");
         }
 
-        // ⚠️ Если имя УЖЕ заключено в кавычки — считаем его полностью безопасным
         if ((identifier.startsWith("`") && identifier.endsWith("`")) || identifier.matches("^[`']+$")) {
             return identifier;  // ничего не трогаем
         }
 
-        // Иначе — экранируем каждую обратную кавычку и оборачиваем
         String escaped = identifier.replace("`", "``");
         return "`" + escaped + "`";
     }
-
-
 
     public static String validateFileName() {
         while (true) {
