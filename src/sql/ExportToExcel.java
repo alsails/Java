@@ -1,6 +1,7 @@
 package sql;
 
 import config.Config;
+import utils.Utils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,9 +11,7 @@ public class ExportToExcel {
     public static void exportToExcel(String fileName, String[][] columns, String tableName, Connection conn) throws SQLException {
         String fileurl = Config.EXCEL_URL + fileName;
 
-        // Формируем SELECT 'col1', 'col2' ...
         StringBuilder header = new StringBuilder("SELECT 'ID'");
-        // Формируем SELECT ID, REPLACE(CAST(...)...
         StringBuilder select = new StringBuilder("SELECT ID");
 
         for (String[] col : columns) {
@@ -21,8 +20,8 @@ public class ExportToExcel {
         }
 
         String sql = header + " UNION ALL " + select +
-                " FROM " + tableName +
-                " INTO OUTFILE '" + fileurl.replace("\\", "/") + "' " +
+                " FROM `" + tableName +
+                "` INTO OUTFILE '" + fileurl.replace("\\", "/") + "' " +
                 "CHARACTER SET cp1251 " +
                 "FIELDS TERMINATED BY '\\t' " +
                 "LINES TERMINATED BY '\\n'";
